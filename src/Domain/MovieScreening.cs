@@ -4,21 +4,15 @@ namespace Domain
 {
     public class MovieScreening
     {
-        private readonly IDictionary<int, IReadOnlyList<Seat>> _rows;
+        private readonly IDictionary<int, Row> _rows;
 
         public MovieScreening(int numberOfRows, int seatsPerRow)
         {
-            _rows = new SortedDictionary<int, IReadOnlyList<Seat>>();
+            _rows = new SortedDictionary<int, Row>();
 
             for (var rowNumber = 1; rowNumber <= numberOfRows; rowNumber++)
             {
-                var row = new List<Seat>(seatsPerRow);
-
-                for (var seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++)
-                {
-                    row.Add(new Seat(rowNumber, seatNumber, SeatStatus.Free));
-                }
-                
+                var row = new Row(rowNumber, seatsPerRow);
                 _rows.Add(rowNumber, row);
             }
         }
