@@ -4,7 +4,9 @@ namespace Domain.Unit.Tests
     {
         public MovieScreening FindMovieScreening(uint movieScreeningId)
         {
-            throw new System.NotImplementedException();
+            var movieScreening = new MovieScreening(5, 5);
+
+            return movieScreening;
         }
     }
 }
