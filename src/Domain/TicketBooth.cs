@@ -11,10 +11,10 @@ namespace Domain
             _movieScreeningRepository = movieScreeningRepository ?? throw new ArgumentNullException(nameof(movieScreeningRepository));
         }
 
-        public void ReserveSeats(ReserveSeats reserveSeats)
+        public SeatsReserved ReserveSeats(ReserveSeats reserveSeats)
         {
             var movieScreening = _movieScreeningRepository.FindMovieScreening(reserveSeats.MovieScreeningId);
-            movieScreening.ReserveSeats(reserveSeats);
+            return movieScreening.ReserveSeats(reserveSeats);
         }
     }
 }

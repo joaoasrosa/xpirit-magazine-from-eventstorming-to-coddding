@@ -37,7 +37,7 @@ namespace Domain
 
             rowWithAvailableSeats.ReserveSeats(reserveSeats.SeatsToBeReserved);
             
-            return new SeatsReserved();
+            return new SeatsReserved(reserveSeats.SeatsToBeReserved);
         }
     }
 }

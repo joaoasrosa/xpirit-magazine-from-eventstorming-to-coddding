@@ -14,5 +14,18 @@ namespace Domain.Unit.Tests
 
             seatsNotAvailable.Should().BeOfType<SeatsNotAvailable>();
         }
+
+        [Fact]
+        public void Reserve_one_seat_when_MovieScreening_only_contains_one_available_seat()
+        {
+            var ticketBooth = Given.A.MovieScreeningWithOneAvailableSeat();
+
+            var seatsReserved = ticketBooth.ReserveSeats(new ReserveSeats(1,1));
+
+            seatsReserved.NumberOfReservedSeats.Should().Be(
+                1, 
+                "there we request the reservation of one seat, and the movie screening has one seat available"
+                );
+        }
     }
 }

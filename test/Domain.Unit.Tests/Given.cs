@@ -8,6 +8,11 @@ namespace Domain.Unit.Tests
             {
                 return new TicketBooth(new ProvideFullyReservedMovieScreenings());
             }
+
+            internal static TicketBooth MovieScreeningWithOneAvailableSeat()
+            {
+                throw new System.NotImplementedException();
+            }
         }
     }
 }
