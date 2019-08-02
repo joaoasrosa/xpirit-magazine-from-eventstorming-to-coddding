@@ -10,7 +10,7 @@ namespace Domain.Unit.Tests
         {
             var ticketBooth = Given.A.FullyReservedMovieScreening();
 
-            var seatsNotAvailable = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(2)));
+            var seatsNotAvailable = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1,2)));
 
             seatsNotAvailable.Should().BeOfType<SeatsNotAvailable>();
         }

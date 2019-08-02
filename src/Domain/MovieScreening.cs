@@ -4,10 +4,13 @@ namespace Domain
 {
     public class MovieScreening
     {
+        public uint MovieScreeningId { get; }
+        
         private readonly IDictionary<int, Row> _rows;
 
-        public MovieScreening(int numberOfRows, int seatsPerRow)
+        public MovieScreening(uint movieScreeningId, int numberOfRows, int seatsPerRow)
         {
+            MovieScreeningId = movieScreeningId;
             _rows = new SortedDictionary<int, Row>();
 
             for (var rowNumber = 1; rowNumber <= numberOfRows; rowNumber++)
@@ -31,6 +34,10 @@ namespace Domain
             
             if(rowWithAvailableSeats is null)
                 throw new SeatsNotAvailable();
+
+            rowWithAvailableSeats.ReserveSeats(reserveSeats.SeatsToBeReserved);
+            
+            return new SeatsReserved();
         }
     }
 }

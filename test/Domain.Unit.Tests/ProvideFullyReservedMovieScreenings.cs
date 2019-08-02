@@ -4,12 +4,12 @@ namespace Domain.Unit.Tests
     {
         public MovieScreening FindMovieScreening(uint movieScreeningId)
         {
-            var movieScreening = new MovieScreening(5, 5);
-            movieScreening.ReserveSeats(new ReserveSeats(5));
-            movieScreening.ReserveSeats(new ReserveSeats(5));
-            movieScreening.ReserveSeats(new ReserveSeats(5));
-            movieScreening.ReserveSeats(new ReserveSeats(5));
-            movieScreening.ReserveSeats(new ReserveSeats(5));
+            var movieScreening = new MovieScreening(movieScreeningId, 5, 5);
+            movieScreening.ReserveSeats(new ReserveSeats(movieScreeningId, 5));
+            movieScreening.ReserveSeats(new ReserveSeats(movieScreeningId, 5));
+            movieScreening.ReserveSeats(new ReserveSeats(movieScreeningId, 5));
+            movieScreening.ReserveSeats(new ReserveSeats(movieScreeningId, 5));
+            movieScreening.ReserveSeats(new ReserveSeats(movieScreeningId, 5));
             return movieScreening;
         }
     }

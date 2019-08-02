@@ -13,7 +13,8 @@ namespace Domain
 
         public void ReserveSeats(ReserveSeats reserveSeats)
         {
-            throw new System.NotImplementedException();
+            var movieScreening = _movieScreeningRepository.FindMovieScreening(reserveSeats.MovieScreeningId);
+            movieScreening.ReserveSeats(reserveSeats);
         }
     }
 }
