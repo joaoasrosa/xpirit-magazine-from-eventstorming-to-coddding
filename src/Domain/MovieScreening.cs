@@ -10,5 +10,10 @@ namespace Domain
             _rows = rows;
             _seatsPerRow = seatsPerRow;
         }
+
+        public void ReserveSeats(ReserveSeats reserveSeats)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
