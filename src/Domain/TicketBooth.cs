@@ -4,9 +4,9 @@ namespace Domain
 {
     public class TicketBooth
     {
-        private readonly IMovieScreeningRepository _movieScreeningRepository;
+        private readonly IProvideMovieScreenings _movieScreeningRepository;
 
-        public TicketBooth(IMovieScreeningRepository movieScreeningRepository)
+        public TicketBooth(IProvideMovieScreenings movieScreeningRepository)
         {
             _movieScreeningRepository = movieScreeningRepository ?? throw new ArgumentNullException(nameof(movieScreeningRepository));
         }
