@@ -19,13 +19,18 @@ namespace Domain
 
         public SeatsReserved ReserveSeats(ReserveSeats reserveSeats)
         {
+            Row rowWithAvailableSeats = null;
+            
             foreach (var row in _rows)
             {
                 if(!row.Value.HasAvailableSeats(reserveSeats.SeatsToBeReserved))
                     continue;
-                
-                
+
+                rowWithAvailableSeats = row.Value;
             }
+            
+            if(rowWithAvailableSeats is null)
+                throw new SeatsNotAvailable();
         }
     }
 }

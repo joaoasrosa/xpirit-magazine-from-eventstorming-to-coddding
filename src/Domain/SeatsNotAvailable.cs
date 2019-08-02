@@ -1,6 +1,8 @@
+using System;
+
 namespace Domain
 {
-    public class SeatsNotAvailable
+    public class SeatsNotAvailable : Exception
     {
     }
 }
