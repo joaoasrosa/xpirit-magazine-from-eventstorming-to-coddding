@@ -9,6 +9,8 @@ namespace Domain.Unit.Tests
         public void Return_SeatsNotAvailable_when_MovieScreening_has_all_its_seats_already_reserved()
         {
             var ticketBooth = new TicketBooth();
+            
+            // Missing all seats reserved
 
             var seatsNotAvailable = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(2)));
 

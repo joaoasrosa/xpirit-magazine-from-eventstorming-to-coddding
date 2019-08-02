@@ -2,9 +2,11 @@ namespace Domain
 {
     public class ReserveSeats
     {
-        public ReserveSeats(int i)
+        public uint SeatsToBeReserved { get; }
+
+        public ReserveSeats(uint seatsToBeReserved)
         {
-            throw new System.NotImplementedException();
+            SeatsToBeReserved = seatsToBeReserved;
         }
     }
 }
