@@ -16,7 +16,7 @@ namespace Domain
 
                 for (var seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++)
                 {
-                    row.Add(new Seat(rowNumber, seatNumber, SeatStatus.Reserved));
+                    row.Add(new Seat(rowNumber, seatNumber, SeatStatus.Free));
                 }
                 
                 _rows.Add(rowNumber, row);
