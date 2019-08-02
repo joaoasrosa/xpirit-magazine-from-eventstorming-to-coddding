@@ -13,7 +13,7 @@ namespace Domain
 
             for (var seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++)
             {
-                seats.Add(new Seat(rowNumber, seatNumber, SeatStatus.Free));
+                seats.Add(new Seat(rowNumber, seatNumber, SeatStatus.Available));
             }
 
             _seats = seats;

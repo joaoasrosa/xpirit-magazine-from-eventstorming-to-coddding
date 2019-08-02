@@ -2,7 +2,7 @@ namespace Domain
 {
     public enum SeatStatus
     {
-        Free,
+        Available,
         Reserved,
         Confirmed
     }

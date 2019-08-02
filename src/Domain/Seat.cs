@@ -13,6 +13,6 @@ namespace Domain
             SeatStatus = seatStatus;
         }
 
-        internal bool IsAvailable => SeatStatus == SeatStatus.Free;
+        internal bool IsAvailable => SeatStatus == SeatStatus.Available;
     }
 }
