@@ -1,14 +1,26 @@
+using System.Collections.Generic;
+
 namespace Domain
 {
     public class MovieScreening
     {
-        private readonly uint _rows;
-        private readonly uint _seatsPerRow;
+        private readonly IDictionary<int, IReadOnlyList<Seat>> _rows;
 
-        public MovieScreening(uint rows, uint seatsPerRow)
+        public MovieScreening(int numberOfRows, int seatsPerRow)
         {
-            _rows = rows;
-            _seatsPerRow = seatsPerRow;
+            _rows = new SortedDictionary<int, IReadOnlyList<Seat>>();
+
+            for (var rowNumber = 1; rowNumber <= numberOfRows; rowNumber++)
+            {
+                var row = new List<Seat>(seatsPerRow);
+
+                for (var seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++)
+                {
+                    row.Add(new Seat(rowNumber, seatNumber, SeatStatus.Reserved));
+                }
+                
+                _rows.Add(rowNumber, row);
+            }
         }
 
         public SeatsReserved ReserveSeats(ReserveSeats reserveSeats)
