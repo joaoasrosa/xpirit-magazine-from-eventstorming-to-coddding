@@ -6,11 +6,13 @@ namespace Domain
         private readonly int _seatNumber;
         private readonly SeatStatus _seatStatus;
 
-        public Seat(int rowNumber, int seatNumber, SeatStatus seatStatus)
+        internal Seat(int rowNumber, int seatNumber, SeatStatus seatStatus)
         {
             _rowNumber = rowNumber;
             _seatNumber = seatNumber;
             _seatStatus = seatStatus;
         }
+
+        internal bool IsAvailable => _seatStatus == SeatStatus.Free;
     }
 }

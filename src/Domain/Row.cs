@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain
 {
     internal class Row
     {
         private readonly IReadOnlyList<Seat> _seats;
-        
-        public Row(int rowNumber, int seatsPerRow)
+
+        internal Row(int rowNumber, int seatsPerRow)
         {
             var seats = new List<Seat>(seatsPerRow);
 
@@ -16,6 +17,13 @@ namespace Domain
             }
 
             _seats = seats;
+        }
+
+        internal bool HasAvailableSeats(uint seatsToBeReserved)
+        {
+            var numberOfAvailableSeats = _seats.Count(seat => seat.IsAvailable);
+
+            return numberOfAvailableSeats >= seatsToBeReserved;
         }
     }
 }

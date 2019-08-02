@@ -19,7 +19,13 @@ namespace Domain
 
         public SeatsReserved ReserveSeats(ReserveSeats reserveSeats)
         {
-            throw new System.NotImplementedException();
+            foreach (var row in _rows)
+            {
+                if(!row.Value.HasAvailableSeats(reserveSeats.SeatsToBeReserved))
+                    continue;
+                
+                
+            }
         }
     }
 }
