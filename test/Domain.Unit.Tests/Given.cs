@@ -6,7 +6,8 @@ namespace Domain.Unit.Tests
         {
             internal static TicketBooth FullyReservedMovieScreening()
             {
-                return new TicketBooth();
+                var ticketBooth = new TicketBooth(new MovieScreeningDouble());
+                return ticketBooth;
             }
         }
     }
