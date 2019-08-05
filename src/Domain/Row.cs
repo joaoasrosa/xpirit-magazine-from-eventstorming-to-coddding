@@ -33,7 +33,7 @@ namespace Domain
             
             foreach (var seat in _seats)
             {
-                if(seat.IsAvailable)
+                if(reservedSeats < seatsToBeReserved && seat.IsAvailable)
                 {
                     seats.Add(new Seat(seat.RowNumber, seat.SeatNumber, SeatStatus.Reserved));
                     reservedSeats++;
@@ -42,9 +42,6 @@ namespace Domain
                 {
                     seats.Add(new Seat(seat.RowNumber, seat.SeatNumber, seat.SeatStatus));
                 }
-
-                if (reservedSeats == seatsToBeReserved)
-                    break;
             }
             
             if (reservedSeats != seatsToBeReserved)
