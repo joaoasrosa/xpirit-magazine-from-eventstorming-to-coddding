@@ -43,7 +43,7 @@ namespace Domain
 
             rows.Add(rowWithAvailableSeats.ReserveSeats(reserveSeats.SeatsToBeReserved));
 
-            _rows = rows.OrderBy(x=>x.RowNumber).ToList();
+            _rows = rows.OrderBy(x => x.RowNumber).ToList();
 
             return new SeatsReserved(reserveSeats.SeatsToBeReserved);
         }
