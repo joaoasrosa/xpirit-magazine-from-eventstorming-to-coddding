@@ -6,10 +6,14 @@ namespace Domain
 {
     internal class Row : ValueType<Row>
     {
-        private IList<Seat> _seats;
+        private readonly IList<Seat> _seats;
 
-        internal Row(int rowNumber, int seatsPerRow)
+        internal int RowNumber { get; }
+
+        private Row(int rowNumber, int seatsPerRow)
         {
+            RowNumber = rowNumber;
+
             var seats = new List<Seat>(seatsPerRow);
 
             for (var seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++)
@@ -20,6 +24,13 @@ namespace Domain
             _seats = seats;
         }
 
+        private Row(int rowNumber, ICollection<Seat> seats)
+        {
+            RowNumber = rowNumber;
+            
+            _seats = new List<Seat>(seats);
+        }
+
         internal bool HasAvailableSeats(uint seatsToBeReserved)
         {
             var numberOfAvailableSeats = _seats.Count(seat => seat.IsAvailable);
@@ -27,7 +38,7 @@ namespace Domain
             return numberOfAvailableSeats >= seatsToBeReserved;
         }
 
-        internal void ReserveSeats(uint seatsToBeReserved)
+        internal Row ReserveSeats(uint seatsToBeReserved)
         {
             var seats = new List<Seat>(_seats.Count);
             var reservedSeats = 0;
@@ -48,12 +59,22 @@ namespace Domain
             if (reservedSeats != seatsToBeReserved)
                 throw new SeatsNotAvailable();
 
-            _seats = seats;
+            return new Row(RowNumber, seats);
+        }
+
+        internal static Row CreateNewRow(int rowNumber, int seatsPerRow)
+        {
+            return new Row(rowNumber, seatsPerRow);
+        }
+
+        public static Row CreateFromRow(Row row)
+        {
+            return new Row(row.RowNumber, row._seats);
         }
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new List<object>() { new ListByValue<Seat>(_seats) };
+            return new List<object>() {RowNumber};
         }
     }
 }
