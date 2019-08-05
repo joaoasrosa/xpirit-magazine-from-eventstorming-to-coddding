@@ -11,7 +11,7 @@ namespace Domain.Unit.Tests
 
             internal static TicketBooth MovieScreeningWithOneAvailableSeat()
             {
-                throw new System.NotImplementedException();
+                return new TicketBooth(new ProvideMovieScreeningsWithOneAvailableSeat());
             }
         }
     }
