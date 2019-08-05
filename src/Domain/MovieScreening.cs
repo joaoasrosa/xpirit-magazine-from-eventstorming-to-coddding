@@ -29,13 +29,7 @@ namespace Domain
 
             foreach (var row in _rows)
             {
-                if (!(rowWithAvailableSeats is null))
-                {
-                    rows.Add(Row.CreateFromRow(row));
-                    continue;
-                }
-                
-                if (!row.HasAvailableSeats(reserveSeats.SeatsToBeReserved))
+                if (!(rowWithAvailableSeats is null) || !row.HasAvailableSeats(reserveSeats.SeatsToBeReserved))
                 {
                     rows.Add(Row.CreateFromRow(row));
                     continue;
