@@ -24,7 +24,7 @@ namespace Domain
             _seats = seats;
         }
 
-        private Row(int rowNumber, ICollection<Seat> seats)
+        private Row(int rowNumber, IEnumerable<Seat> seats)
         {
             RowNumber = rowNumber;
             
@@ -67,7 +67,7 @@ namespace Domain
             return new Row(rowNumber, seatsPerRow);
         }
 
-        public static Row CreateFromRow(Row row)
+        internal static Row CreateFromRow(Row row)
         {
             return new Row(row.RowNumber, row._seats);
         }
