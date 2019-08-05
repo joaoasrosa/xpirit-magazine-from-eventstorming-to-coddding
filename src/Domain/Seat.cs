@@ -35,7 +35,7 @@ namespace Domain
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new List<object>() { RowNumber, SeatNumber };
+            return new List<object>() {RowNumber, SeatNumber};
         }
     }
 }

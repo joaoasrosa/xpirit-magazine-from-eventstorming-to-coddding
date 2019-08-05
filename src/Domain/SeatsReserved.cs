@@ -7,6 +7,6 @@ namespace Domain
             NumberOfReservedSeats = numberOfReservedSeats;
         }
 
-        public uint NumberOfReservedSeats { get;}
+        public uint NumberOfReservedSeats { get; }
     }
 }

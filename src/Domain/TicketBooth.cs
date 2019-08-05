@@ -8,7 +8,8 @@ namespace Domain
 
         public TicketBooth(IProvideMovieScreenings movieScreeningRepository)
         {
-            _movieScreeningRepository = movieScreeningRepository ?? throw new ArgumentNullException(nameof(movieScreeningRepository));
+            _movieScreeningRepository = movieScreeningRepository ??
+                                        throw new ArgumentNullException(nameof(movieScreeningRepository));
         }
 
         public SeatsReserved ReserveSeats(ReserveSeats reserveSeats)
