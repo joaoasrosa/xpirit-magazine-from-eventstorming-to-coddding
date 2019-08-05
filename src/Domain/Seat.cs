@@ -2,17 +2,32 @@ namespace Domain
 {
     internal class Seat
     {
+        private readonly SeatStatus _seatStatus;
         internal int RowNumber { get; }
         internal int SeatNumber { get; }
-        internal SeatStatus SeatStatus { get; }
 
-        internal Seat(int rowNumber, int seatNumber, SeatStatus seatStatus)
+        private Seat(int rowNumber, int seatNumber, SeatStatus seatStatus)
         {
+            _seatStatus = seatStatus;
             RowNumber = rowNumber;
             SeatNumber = seatNumber;
-            SeatStatus = seatStatus;
         }
 
-        internal bool IsAvailable => SeatStatus == SeatStatus.Available;
+        internal bool IsAvailable => _seatStatus == SeatStatus.Available;
+
+        internal static Seat CreateAvailableSeat(int rowNumber, int seatNumber)
+        {
+            return new Seat(rowNumber, seatNumber, SeatStatus.Available);
+        }
+        
+        internal static Seat CreateReservedSeat(int rowNumber, int seatNumber)
+        {
+            return new Seat(rowNumber, seatNumber, SeatStatus.Reserved);
+        }
+
+        internal static Seat CreateFromSeat(Seat seat)
+        {
+            return new Seat(seat.RowNumber, seat.SeatNumber, seat._seatStatus);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Domain
 
             for (var seatNumber = 1; seatNumber <= seatsPerRow; seatNumber++)
             {
-                seats.Add(new Seat(rowNumber, seatNumber, SeatStatus.Available));
+                seats.Add(Seat.CreateAvailableSeat(rowNumber, seatNumber));
             }
 
             _seats = seats;
@@ -35,12 +35,12 @@ namespace Domain
             {
                 if(reservedSeats < seatsToBeReserved && seat.IsAvailable)
                 {
-                    seats.Add(new Seat(seat.RowNumber, seat.SeatNumber, SeatStatus.Reserved));
+                    seats.Add(Seat.CreateReservedSeat(seat.RowNumber, seat.SeatNumber));
                     reservedSeats++;
                 }
                 else
                 {
-                    seats.Add(new Seat(seat.RowNumber, seat.SeatNumber, seat.SeatStatus));
+                    seats.Add(Seat.CreateFromSeat(seat));
                 }
             }
             
