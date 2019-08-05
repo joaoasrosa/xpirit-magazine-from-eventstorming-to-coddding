@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Value;
 
 namespace Domain
 {
-    internal class Row
+    internal class Row : ValueType<Row>
     {
-        private IReadOnlyList<Seat> _seats;
+        private IList<Seat> _seats;
 
         internal Row(int rowNumber, int seatsPerRow)
         {
@@ -30,10 +31,10 @@ namespace Domain
         {
             var seats = new List<Seat>(_seats.Count);
             var reservedSeats = 0;
-            
+
             foreach (var seat in _seats)
             {
-                if(reservedSeats < seatsToBeReserved && seat.IsAvailable)
+                if (reservedSeats < seatsToBeReserved && seat.IsAvailable)
                 {
                     seats.Add(Seat.CreateReservedSeat(seat.RowNumber, seat.SeatNumber));
                     reservedSeats++;
@@ -43,11 +44,16 @@ namespace Domain
                     seats.Add(Seat.CreateFromSeat(seat));
                 }
             }
-            
+
             if (reservedSeats != seatsToBeReserved)
                 throw new SeatsNotAvailable();
 
             _seats = seats;
+        }
+
+        protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
+        {
+            return new List<object>() { new ListByValue<Seat>(_seats) };
         }
     }
 }
