@@ -1,18 +1,17 @@
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 
 namespace Domain
 {
     public class MovieScreening
     {
-        public uint MovieScreeningId { get; }
+        public MovieScreeningId MovieScreeningId { get; }
 
         private IList<Row> _rows;
 
         public MovieScreening(uint movieScreeningId, int numberOfRows, int seatsPerRow)
         {
-            MovieScreeningId = movieScreeningId;
+            MovieScreeningId = (MovieScreeningId) movieScreeningId;
             _rows = new List<Row>();
 
             for (var rowNumber = 1; rowNumber <= numberOfRows; rowNumber++)
