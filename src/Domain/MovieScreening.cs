@@ -9,7 +9,7 @@ namespace Domain
 
         private IList<Row> _rows;
 
-        public MovieScreening(MovieScreeningId movieScreeningId, int numberOfRows, int seatsPerRow)
+        private MovieScreening(uint movieScreeningId, int numberOfRows, int seatsPerRow)
         {
             MovieScreeningId = movieScreeningId;
             _rows = new List<Row>();
@@ -45,6 +45,11 @@ namespace Domain
             _rows = rows.OrderBy(x => x.RowNumber).ToList();
 
             return new SeatsReserved(reserveSeats.SeatsToBeReserved);
+        }
+
+        public static MovieScreening CreateFrom(uint movieScreeningId, int numberOfRows, int seatsPerRow)
+        {
+            return new MovieScreening(movieScreeningId, numberOfRows, seatsPerRow);
         }
     }
 }
