@@ -19,7 +19,7 @@ namespace Domain
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new List<object>() {_movieScreeningId};
+            return new List<object> {_movieScreeningId};
         }
     }
 }
