@@ -8,9 +8,9 @@ namespace Domain
     {
         private readonly IList<Seat> _seats;
 
-        internal int RowNumber { get; }
+        internal RowNumber RowNumber { get; }
 
-        private Row(int rowNumber, int seatsPerRow)
+        private Row(RowNumber rowNumber, int seatsPerRow)
         {
             RowNumber = rowNumber;
 
@@ -24,7 +24,7 @@ namespace Domain
             _seats = seats;
         }
 
-        private Row(int rowNumber, IEnumerable<Seat> seats)
+        private Row(RowNumber rowNumber, IEnumerable<Seat> seats)
         {
             RowNumber = rowNumber;
             
