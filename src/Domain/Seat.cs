@@ -7,9 +7,9 @@ namespace Domain
     {
         private readonly SeatStatus _seatStatus;
         internal RowNumber RowNumber { get; }
-        internal int SeatNumber { get; }
+        internal SeatNumber SeatNumber { get; }
 
-        private Seat(RowNumber rowNumber, int seatNumber, SeatStatus seatStatus)
+        private Seat(RowNumber rowNumber, SeatNumber seatNumber, SeatStatus seatStatus)
         {
             _seatStatus = seatStatus;
             RowNumber = rowNumber;
@@ -23,12 +23,12 @@ namespace Domain
 
         internal bool IsAvailable => _seatStatus == SeatStatus.Available;
 
-        internal static Seat CreateAvailableSeat(RowNumber rowNumber, int seatNumber)
+        internal static Seat CreateAvailableSeat(RowNumber rowNumber, SeatNumber seatNumber)
         {
             return new Seat(rowNumber, seatNumber, SeatStatus.Available);
         }
 
-        internal static Seat CreateReservedSeat(RowNumber rowNumber, int seatNumber)
+        internal static Seat CreateReservedSeat(RowNumber rowNumber, SeatNumber seatNumber)
         {
             return new Seat(rowNumber, seatNumber, SeatStatus.Reserved);
         }
