@@ -12,12 +12,7 @@ namespace Domain
             _movieScreeningId = movieScreeningId;
         }
 
-        public static implicit operator uint(MovieScreeningId movieScreeningId)
-        {
-            return movieScreeningId._movieScreeningId;
-        }
-
-        public static explicit operator MovieScreeningId(uint movieScreeningId)
+        public static implicit operator MovieScreeningId(uint movieScreeningId)
         {
             return new MovieScreeningId(movieScreeningId);
         }

@@ -9,9 +9,9 @@ namespace Domain
 
         private IList<Row> _rows;
 
-        public MovieScreening(uint movieScreeningId, int numberOfRows, int seatsPerRow)
+        public MovieScreening(MovieScreeningId movieScreeningId, int numberOfRows, int seatsPerRow)
         {
-            MovieScreeningId = (MovieScreeningId) movieScreeningId;
+            MovieScreeningId = movieScreeningId;
             _rows = new List<Row>();
 
             for (var rowNumber = 1; rowNumber <= numberOfRows; rowNumber++)
