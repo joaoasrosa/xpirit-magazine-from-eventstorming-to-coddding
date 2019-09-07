@@ -42,19 +42,40 @@ namespace AnemicDomain
 
         private List<Seat> DoesRowHaveEnoughSeats(Movie movie, string row, int numberOfSeat)
         {
+            var seats = new List<Seat>();
+
             for (int i = 0; i < movie.NumberOfSeatsPerRow - numberOfSeat; i++)
             {
                 bool seatsAvailable = true;
                 for (int o = 0; o < numberOfSeat; o++)
                 {
-                    if (movie.Seats[int.Parse(row)][i + o] == null)
+                    if (!movie.Seats.ContainsKey(int.Parse(row)))
                     {
                         seatsAvailable = false;
+                        movie.Seats.Add(int.Parse(row), new List<Seat> {new Seat {RowNumber = int.Parse(row)}});
+                        seats.Add(new Seat {RowNumber = int.Parse(row)});
                     }
+                    else if(movie.Seats.ContainsKey(int.Parse(row)))
+                    {
+                        var rowSeats = movie.Seats[int.Parse(row)];
+                        if (rowSeats.Count + numberOfSeat <= movie.NumberOfSeatsPerRow)
+                        {
+                            seatsAvailable = false;
+
+                            for (int j = o; j < numberOfSeat; j++)
+                            {
+                                rowSeats.Add(new Seat{RowNumber = int.Parse(row)});
+                                seats.Add(new Seat {RowNumber = int.Parse(row)});
+                            }
+                        }
+                    }
+
+                    if (seats.Count == numberOfSeat)
+                        return seats;
                 }
             }
 
-            return new List<Seat>();
+            return seats;
         }
     }
 }
