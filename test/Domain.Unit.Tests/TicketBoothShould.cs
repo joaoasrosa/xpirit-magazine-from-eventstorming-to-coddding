@@ -13,7 +13,9 @@ namespace Domain.Unit.Tests
 
             var seatsNotAvailable = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1, 2)));
 
-            seatsNotAvailable.Should().BeOfType<SeatsNotAvailable>();
+            seatsNotAvailable.Should().BeOfType<SeatsNotAvailable>(
+                "there are no seats available for the movie screening"
+            );
         }
 
         [Fact]
