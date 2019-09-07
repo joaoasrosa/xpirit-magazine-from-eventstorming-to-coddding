@@ -32,7 +32,7 @@ namespace Domain.Unit.Tests
         [Fact]
         public void Return_MaximumEightSeatsPerCustomer_when_tries_to_buy_nine_seats()
         {
-            
+            var ticketBooth = Given.A.EmptyMovieScreening();
         }
     }
 }

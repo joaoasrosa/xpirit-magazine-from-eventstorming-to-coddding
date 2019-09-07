@@ -13,6 +13,11 @@ namespace Domain.Unit.Tests
             {
                 return new TicketBooth(new ProvideMovieScreeningsWithOneAvailableSeat());
             }
+
+            internal static TicketBooth EmptyMovieScreening()
+            {
+                return new TicketBooth(new ProvideEmptyMovieScreenings());
+            }
         }
     }
 }
