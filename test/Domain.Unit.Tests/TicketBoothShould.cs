@@ -11,7 +11,7 @@ namespace Domain.Unit.Tests
         {
             var ticketBooth = Given.A.FullyReservedMovieScreening();
 
-            var seatsNotAvailable = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1,2)));
+            var seatsNotAvailable = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1, 2)));
 
             seatsNotAvailable.Should().BeOfType<SeatsNotAvailable>();
         }
@@ -21,22 +21,24 @@ namespace Domain.Unit.Tests
         {
             var ticketBooth = Given.A.MovieScreeningWithOneAvailableSeat();
 
-            var seatsReserved = ticketBooth.ReserveSeats(new ReserveSeats(1,1));
+            var seatsReserved = ticketBooth.ReserveSeats(new ReserveSeats(1, 1));
 
             seatsReserved.NumberOfReservedSeats.Should().Be(
-                1, 
+                1,
                 "there we request the reservation of one seat, and the movie screening has one seat available"
-                );
+            );
         }
 
         [Fact]
-        public void Return_MaximumEightSeatsPerCustomer_when_tries_to_buy_nine_seats()
+        public void Return_MaximumEightSeatsPerCustomer_when_tries_to_reserve_nine_seats()
         {
             var ticketBooth = Given.A.EmptyMovieScreening();
-            
-            var maximumEightSeatsPerCustomer = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1,9)));
 
-            maximumEightSeatsPerCustomer.Should().BeOfType<MaximumEightSeatsPerCustomer>();
+            var maximumEightSeatsPerCustomer = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1, 9)));
+
+            maximumEightSeatsPerCustomer.Should().BeOfType<MaximumEightSeatsPerCustomer>(
+                "a maximum of 8 seats can be reserved per customer"
+            );
         }
     }
 }
