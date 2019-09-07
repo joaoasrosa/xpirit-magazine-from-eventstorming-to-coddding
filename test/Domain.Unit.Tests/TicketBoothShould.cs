@@ -33,6 +33,10 @@ namespace Domain.Unit.Tests
         public void Return_MaximumEightSeatsPerCustomer_when_tries_to_buy_nine_seats()
         {
             var ticketBooth = Given.A.EmptyMovieScreening();
+            
+            var maximumEightSeatsPerCustomer = Record.Exception(() => ticketBooth.ReserveSeats(new ReserveSeats(1,9)));
+
+            maximumEightSeatsPerCustomer.Should().BeOfType<MaximumEightSeatsPerCustomer>();
         }
     }
 }
