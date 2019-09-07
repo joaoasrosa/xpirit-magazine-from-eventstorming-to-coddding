@@ -14,6 +14,9 @@ namespace Domain
 
         public SeatsReserved ReserveSeats(ReserveSeats reserveSeats)
         {
+            if (reserveSeats.SeatsToBeReserved > 8)
+                throw new MaximumEightSeatsPerCustomer();
+
             var movieScreening = _movieScreeningRepository.FindMovieScreening(reserveSeats.MovieScreeningId);
             return movieScreening.ReserveSeats(reserveSeats);
         }
