@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using FluentAssertions;
 using Xunit;
 
@@ -26,6 +27,12 @@ namespace Domain.Unit.Tests
                 1, 
                 "there we request the reservation of one seat, and the movie screening has one seat available"
                 );
+        }
+
+        [Fact]
+        public void Return_MaximumEightSeatsPerCustomer_when_tries_to_buy_nine_seats()
+        {
+            
         }
     }
 }
