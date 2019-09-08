@@ -12,6 +12,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnemicDomain", "src\AnemicD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnemicDomain.Unit.Tests", "test\AnemicDomain.Unit.Tests\AnemicDomain.Unit.Tests.csproj", "{926075AB-A9EC-48CB-A0FF-BAE53FBADDF2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5B0B72CB-B59A-4963-B995-18763A9A5CAC}"
+ProjectSection(SolutionItems) = preProject
+	README.md = README.md
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
